@@ -60,7 +60,8 @@ class WooCommerce_Smart_Sale_Badge {
 		if( $saving_amount > 0 ) {
 			$saving_price = woocommerce_price( $saving_amount );
 			$saving_price_r = apply_filters("wc_smart_sale_badge_price", sprintf( __( ' %s!', 'wc_smart_sale_badge' ), $saving_price ), $saving_price, $product);
-			$message = '<span class="onsale">' . $button_text . $saving_price_r . '</span>';
+			$message = apply_filters("wc_smart_sale_badge_message", $button_text . $saving_price_r, $saving_price, $product);
+			$message = '<span class="onsale">' . $message . '</span>'
 		}
 
 		return $message;
